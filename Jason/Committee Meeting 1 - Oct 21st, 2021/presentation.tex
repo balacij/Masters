@@ -4,6 +4,8 @@
 \usepackage{textcomp}
 \usepackage{listings}
 \usepackage{lmodern}
+\usepackage{hyperref}
+\usepackage[style=ieee]{biblatex}
 \usepackage[T1]{fontenc}
 
 \lstset{
@@ -14,6 +16,7 @@
 
 \setbeamertemplate{caption}{\raggedright\insertcaption\par}
 
+\addbibresource{references.bib}
 
 \title[Committee Meeting 1]{First Committee Meeting}
 \subtitle{Progress Report}
@@ -133,9 +136,12 @@
     \frametitle{What is Drasil?}
     \begin{columns}[T,onlytextwidth]
         \begin{column}{.5\textwidth}
+            Drasil is...
+            \newline \newline
             \begin{minipage}{\textwidth}
                 \begin{itemize}
-                    \item<1-> Drasil is...
+                    \item<1-> managed by Dr. Carette \& Dr. Smith
+                    \item<2-> originating from the work of Dan Szymczak
                 \end{itemize}
             \end{minipage}
         \end{column}
@@ -170,11 +176,9 @@
 \section{References}
 
 \begin{frame}
-\frametitle{References}
-\begin{itemize}
- \item Carette, Jacques, Oleg Kiselyov, and Chung-chieh Shan. ``Finally tagless, partially evaluated: Tagless staged interpreters for simpler typed languages.'' \textit{Journal of Functional Programming} 19.5 (2009): 509.
-\end{itemize}
+    \frametitle{References}
 
+    \printbibliography
 \end{frame}
 
 
