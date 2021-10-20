@@ -176,7 +176,7 @@
 \begin{frame}
     \frametitle{Drasil Case Studies}
     \begin{itemize}
-        \item<2-> Drasil currenty contains a significant amount of Physics-related knowledge.
+        \item<2-> Drasil currently contains a significant amount of Physics-related knowledge.
         \item<3-> As of writing, current case studies include:
             \begin{itemize}
                 \item<4-> \textbf{GlassBR} - Predicting whether or not a glass slab is likely to resist a specified blast.
@@ -209,30 +209,39 @@
     \begin{figure}
         \center
         \includegraphics[width=0.75\textwidth]{assets/DrasilSupportsChange.png}
-        \caption{Figure created by Dr. Spencer Smith.}
+        \caption{Knowledge flow from ``knowledge-base''/source code to artifacts, by Dr. Spencer Smith}
         \label{fig:glassbr}
     \end{figure}
 \end{frame}
 
 \begin{frame}
     \frametitle{Which case studies currently generate code?}
-    \begin{alertblock}{\footnotesize Not all case studies generate code yet!}<2->
-        {\tiny Some are a work-in-progress, and some require more infrastructure to enable it.}
-    \end{alertblock}
-    
-    % TODO: List the ones that currently generate code.
+
+    \begin{itemize}
+        \item<1-> \textbf{GlassBR} - Predicting whether or not a glass slab is likely to resist a specified blast.
+        \item<2-> \textbf{Proportional Derivative Controller (PDController)} - Examining the output of a ``Power Plant'' (Process Variable) over time.
+        \item<3-> \textbf{SWHS without Phase Change Material (NoPCM)} - Modelling of a solar water heating system without phase change material, predicting temperatures and change in heat energy of water and the PCM over time.
+        \item<4-> \textbf{Projectile} - Determining if a launched projectile hits a target, assuming no flight collisions.
+    \end{itemize}
 \end{frame}
 
-% TODO: What's stopping the non-code-generating examples from having workable generable code?
 \begin{frame}
     \frametitle{Why don't all case studies generate software artifacts?}
-    
-    % TODO: Expand here.
-\end{frame}
+    \framesubtitle{Where will I be contributing?}
 
-\begin{frame}
-    \frametitle{Where will I be contributing?}
-    %% TODO: What I will be contributing
+    \onslide<2->{After all,}
+    \begin{itemize}
+        \item<3-> They're all ``well-understood''!
+        \item<4-> The SRS documents are generated!\\
+    \end{itemize}
+
+    \onslide<5->{A few, notable, blocking problems:}
+    \begin{itemize}
+        \item<6-> Confidently generating usable software artifacts without strong type information places significant stress on developers, resulting in a higher likelihood of bugs in artifacts.
+        \item<7-> Existing ``theories''/``*Models''\footnotemark[1] don't expose enough information. They must be enriched.
+    \end{itemize}
+
+    \footnotetext[1]{\tiny Terminology is currently being changed, but is not reflected in many documents yet.}
 \end{frame}
 
 \subsection{Goal \#1: Typed Expression Language}
@@ -241,11 +250,23 @@
 %% TODO: Current project status?
 
 \subsection{Goal \#2: Model Discrimination -- ``ModelKinds''}
+%% TODO: ``RelationConcept''s don't contain enough information on their own to be a core component usable in code generation.
 %% TODO: Problem? Why focus on this?
 %% TODO: What is a good ``solution''?
 %% TODO: Current project status?
 
-%% TODO: Final Acknowledgements?
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ACKNOWLEDGEMENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+    \frametitle{Acknowledgements}
+    
+    % TODO: Dr. Carette for the project ideas
+    % TODO: Dr. Smith for the figure image
+    % TODO: Both for their help and support
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% A FINAL THANK YOU
