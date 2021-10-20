@@ -5,8 +5,8 @@
 \usepackage{listings}
 \usepackage{lmodern}
 \usepackage{hyperref}
-\usepackage[style=ieee]{biblatex}
 \usepackage[T1]{fontenc}
+
 
 \lstset{
     language=[latex]tex,
@@ -15,8 +15,6 @@
 \usetheme{Madrid}
 
 \setbeamertemplate{caption}{\raggedright\insertcaption\par}
-
-\addbibresource{references.bib}
 
 \title[Committee Meeting 1]{First Committee Meeting}
 \subtitle{Progress Report}
@@ -63,17 +61,17 @@
         \begin{column}{.5\textwidth}
             \begin{minipage}{\textwidth}
                 \begin{itemize}
-                    \item<1-> I am \textbf{Jason Balaci}
-                    \item<2-> Graduate of \emph{McMaster University}, holding...
+                    \item<2-> I am \textbf{Jason Balaci}
+                    \item<3-> Graduate of \emph{McMaster University}, holding...
                         \begin{itemize}
-                            \item<3-> Hons. Actuarial and Financial Mathematics (B.Sc.)
-                            \item<4-> Minor in Computer Science
+                            \item<4-> Hons. Actuarial and Financial Mathematics (B.Sc.)
+                            \item<5-> Minor in Computer Science
                         \end{itemize}
-                    \item<5-> Currently pursuing a thesis-based Master's of Computer Science (M.Sc) at \emph{McMaster University}, under the supervision of \textbf{Dr. Jacques Carette}
+                    \item<6-> Currently pursuing a thesis-based Master's of Computer Science (M.Sc) at \emph{McMaster University}, under the supervision of \textbf{Dr. Jacques Carette}
                 \end{itemize}
             \end{minipage}
         \end{column}
-        \begin{column}{.45\textwidth}
+        \begin{column}{.45\textwidth}<2->
             \begin{figure}
                 \includegraphics[width=.8\textwidth]{assets/me.jpeg}
                 \caption{Me, Fall 2019}
@@ -89,7 +87,7 @@
         \item<1-> I'm required to complete\footnotemark[1]:
             \begin{itemize}
                 \item<2-> One (1) ``Software'' course
-                \item<3-> Either:
+                \item<3-> Either of:
                     \begin{itemize}
                         \item<4-> Two ``Theory'' courses, and one ``Systems'' course
                         \item<4-> One ``Theory'' course, and two ``Systems'' courses
@@ -133,25 +131,69 @@
 \subsection{Drasil}
 
 \begin{frame}
-    \frametitle{What is Drasil?}
+    \frametitle{Drasil Preface}
     \begin{columns}[T,onlytextwidth]
         \begin{column}{.5\textwidth}
-            Drasil is...
+            Drasil...
             \newline \newline
             \begin{minipage}{\textwidth}
                 \begin{itemize}
-                    \item<1-> managed by Dr. Carette \& Dr. Smith
-                    \item<2-> originating from the work of Dan Szymczak
+                    \item<1-> is managed by Dr. Carette \& Dr. Smith.
+                    \item<2-> originates from the work of Dan Szymczak.
+                        \begin{itemize}
+                            \item<3-> Originally focused on scientific software (\emph{Literate Scientific Software}).
+                            \item<4-> Focus shifted into...
+                        \end{itemize}
+                    \item<5-> tries to ``Generate All The Things''...
+                    \begin{itemize}
+                        \item<6-> with a focus on research software.
+                    \end{itemize}
                 \end{itemize}
             \end{minipage}
         \end{column}
         \begin{column}{.45\textwidth}
             \begin{figure}
                 \includegraphics[width=.8\textwidth]{assets/drasil-logo.png}
-                \caption{Drasil's Logo} % TODO: Origin of file
+                \caption{Drasil's Logo \tiny\cite{Drasil2021}\cite{YggdrasilWiki2021}} % TODO: Origin of file
             \end{figure}
         \end{column}
     \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Drasil}
+    \framesubtitle{``Generate All The Things!''}
+    
+    \begin{itemize}
+        \item TODO: here!
+% TODO: ``Generate All The Things!'' is a beautifully appropriate tagline for Drasil
+%       for a few reasons:
+%                  1. What are ``Things''? One may only think of ``Things'' as far as their knowledge and understanding allows them! You wouldn't be able to think of things without some sort of basis/constructive understanding/methodology to _get_ there, you can't _think of random phenomena_ (that's why they're phenomena).
+    \end{itemize}
+\end{frame}
+
+% TODO: Currently contained examples...
+\begin{frame}
+    \frametitle{}
+    
+\end{frame}
+
+% TODO: A closer look into GlassBR...
+\begin{frame}
+    \frametitle{}
+    
+\end{frame}
+
+% TODO: Which examples currently generate code?
+\begin{frame}
+    \frametitle{}
+    
+\end{frame}
+
+% TODO: What's stopping the non-code-generating examples from having workable generable code?
+\begin{frame}
+    \frametitle{}
+    
 \end{frame}
 
 \begin{frame}
@@ -173,12 +215,23 @@
 %% REFERENCES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{frame}
+    \center
+    \huge{Fin.}\\
+    \normalsize{Thank you!}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% REFERENCES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{References}
 
-\begin{frame}
+\begin{frame}[allowframebreaks]
     \frametitle{References}
 
-    \printbibliography
+    \bibliography{references}
+    \bibliographystyle{amsalpha}
 \end{frame}
 
 
