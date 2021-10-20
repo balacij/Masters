@@ -1,6 +1,0 @@
-\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
-\beamer@sectionintoc {2}{Project}{8}{0}{2}
-\beamer@subsectionintoc {2}{1}{Drasil}{9}{0}{2}
-\beamer@subsectionintoc {2}{2}{Goal \#1: Typed Expression Language}{9}{0}{2}
-\beamer@subsectionintoc {2}{3}{Goal \#2: Model Discrimination -- ``ModelKinds''}{9}{0}{2}
-\beamer@sectionintoc {3}{References}{9}{0}{3}
