@@ -1,0 +1,211 @@
+\documentclass{beamer}
+
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{listings}
+\usepackage{lmodern}
+
+\lstset{
+    language=[latex]tex,
+    breaklines=true}
+
+%%%%%%%%%%%%%%%%%%% BEGIN : IMPORTED CODE
+\lstset{literate={→}{$\rightarrow$}1}
+\DeclareUnicodeCharacter{00A0}{ }
+\DeclareUnicodeCharacter{2192}{\dash}
+
+\newsavebox{\haskellTypes}
+\newsavebox{\pZeroTypes}
+\newsavebox{\haskellTypesInst}
+\newsavebox{\pZeroTypesInst}
+
+\newsavebox{\anatomyOfCaseBox}
+%%%%%%%%%%%%%%%%%%% END : IMPORTED CODE
+
+% \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usetheme{Madrid}
+
+\title[Committee Meeting 1]{First Committee Meeting}
+\subtitle{Progress Report}
+\author{Jason Balaci}
+\institute{McMaster University}
+\date{Oct. $21^{st}$, 2021}
+
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{document}
+
+
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{Table of Contents}
+\tableofcontents
+\end{frame}
+
+\section{Introduction}
+\begin{frame}
+    \frametitle{Who am I?}
+    \begin{columns}[T,onlytextwidth]
+        \begin{column}{.5\textwidth}
+            \begin{minipage}{\textwidth}
+                \begin{itemize}
+                    \item<1-> Jason Balaci
+                    \item<2-> Graduate of \emph{McMaster University}, holding...
+                        \begin{itemize}
+                            \item<2-> Honours Actuarial and Financial Mathematics (B.Sc.)
+                            \item<2-> Minor in Computer Science
+                        \end{itemize}
+                    \item<3-> Currently pursuing a Master's of Computer Science (M.Sc) at \emph{McMaster University}, under the supervision of \textbf{Dr. Carette}
+                \end{itemize}
+            \end{minipage}
+        \end{column}
+        \begin{column}{.45\textwidth}
+            \includegraphics[width=.8\textwidth]{me.jpeg}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Overview of Progression towards Master's of Computer Science (M.Sc.)}
+\end{frame}
+
+%% TODO: What am I pursuing
+%% TODO: What progress have I made towards my degree regulations
+\section{Project}
+\subsection{Drasil}
+%% TODO: What is Drasil?
+%% TODO: What I will be contributing
+\subsection{Goal \#1: Typed Expression Language}
+\subsection{Goal \#2: Model Discrimination -- ``ModelKinds''}
+\section{References}
+
+\begin{frame}
+    \frametitle{}
+    \framesubtitle{}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%% BEGIN : IMPORTED CODE
+\begin{frame}
+\frametitle{What are Disjoint Union Types?}
+
+\begin{itemize}
+ \item<1-> \textbf{Disjoint union types} (DUTs) are types where values can take the form of one of many type constructions, with a \textbf{unique identifier tag}.
+ \item<2-> Each DUT has a set of possible types it can take on, called ``variants'', or ``kinds''.
+ \item<3-> These ``variants'' may be records, or the unit type (``()'').
+ \item<4-> An instance of a DUT may take on the form of \textbf{only one} of it's variants. 
+ \item<5-> They are often found in functional programming languages, where they are usually known as \textbf{Algebraic Data Types} (ADTs).
+\end{itemize}
+
+\end{frame}
+
+\begin{lrbox}{\haskellTypes}
+\begin{lstlisting}[language=Haskell, basicstyle=\footnotesize]
+data List a = Nil | Cons a (List a)
+data RGB = Red | Green | Blue
+\end{lstlisting}
+\end{lrbox}
+
+\begin{lrbox}{\pZeroTypes}
+\begin{lstlisting}[language=Pascal, basicstyle=\footnotesize]
+type List = Nil | Cons(value: integer, tail: List)
+type RGB = Red | Green | Blue
+\end{lstlisting}
+\end{lrbox}
+
+
+\begin{lrbox}{\haskellTypesInst}
+\begin{lstlisting}[language=Haskell, basicstyle=\footnotesize]
+a = Cons 1 (Cons 2 (Cons 3 Nil))
+b = Red
+\end{lstlisting}
+\end{lrbox}
+
+\begin{lrbox}{\pZeroTypesInst}
+\begin{lstlisting}[language=Pascal, basicstyle=\footnotesize]
+a := Cons(1, Cons(2, Cons(3, Nil())))
+b := Red()
+\end{lstlisting}
+\end{lrbox}
+
+\begin{frame}
+\frametitle{What do they look like?}
+\begin{itemize}
+ \item<1-> Declarations in Haskell,\\
+    \usebox{\haskellTypes} \\
+    \ \\
+ \item<2-> Declarations in our implementation,\\
+    \usebox{\pZeroTypes} \\
+    \ \\
+ \item<3-> Instantiation in Haskell,\\
+    \usebox{\haskellTypesInst} \\
+    \ \\
+ \item<4-> Instantiation in our implementation,\\
+    \usebox{\pZeroTypesInst} \\
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+ \frametitle{How do we use DUTs?}
+ \framesubtitle{The anatomy of the \texttt{case} statement.}
+    \begin{columns}[T,onlytextwidth]
+        \begin{column}{.5\textwidth}
+            \begin{minipage}{\textwidth}
+                \begin{itemize}
+                    \item<1-> \texttt{case}s are the only way to access data inside of DUTs.
+                    \item<2-> Check if DUTs were \textit{initialized} using an optional \texttt{nil} case at the start.
+                    \item<3-> \texttt{case} on any of the variants.
+                    \item<4-> Within the statement suite of each variant \texttt{case}, the variable in question is assumed to be an instance of the variant's record.
+                    \item<5-> \texttt{default} case allows you to perform either a statement suite or a no-op on all non-covered cases. 
+                \end{itemize}
+            \end{minipage}
+        \end{column}
+        \begin{column}{.45\textwidth}
+            \begin{onlyenv}
+                \begin{minipage}{\textwidth}
+                    \setlength{\leftmargini}{0cm}
+                    % \usebox{\anatomyOfCaseBox}
+                    \begin{itemize}[label={},leftmargin=*]
+                     \item[]<1-> \texttt{case <variable> of \{}
+                     \item[]<2-> \hphantom{~~~~}\texttt{[nil: <stmtSuite>]}
+                     \item[]<3-> \hphantom{~~~~}\texttt{Kind A: <stmtSuite>}
+                     \item[]<4-> \hphantom{~~~~}\texttt{Kind B: <stmtSuite>}
+                     \item[]<4-> \hphantom{~~~~}\texttt{...}
+                     \item[]<5-> \hphantom{~~~~}\texttt{[default: <stmtSuite>]}
+                     \item[]<6-> \hphantom{~~~~}\texttt{... or ...}
+                     \item[]<7-> \hphantom{~~~~}\texttt{[default nothing]}
+                     \item[]<7-> \texttt{\}}
+                    \end{itemize}
+
+                    \begin{alertblock}{\footnotesize Cover your \texttt{case}s!}<8->
+                        {\footnotesize If you create a non-exhaustive \texttt{case} statement, the compiler will warn you.}
+                    \end{alertblock}
+                \end{minipage}
+            \end{onlyenv}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%% END : IMPORTED CODE
+
+\begin{frame}
+\frametitle{References}
+\begin{itemize}
+ \item Carette, Jacques, Oleg Kiselyov, and Chung-chieh Shan. ``Finally tagless, partially evaluated: Tagless staged interpreters for simpler typed languages.'' \textit{Journal of Functional Programming} 19.5 (2009): 509.
+\end{itemize}
+
+\end{frame}
+
+
+\end{document}
