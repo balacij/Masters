@@ -254,15 +254,29 @@
 
 \subsection{Goal \#1: Typed Expression Language}
 %% TODO: Problem? Why focus on this?
-%% TODO: What is a good ``solution''?
+
 %% TODO: Current project status?
+%%  - Split expression language into 3 variants (Expr, ModelExpr, and CodeExpr)
+%%  - `Expr' is a discrete, directly computable language (calculator possible)
+%%  - `ModelExpr' contains all possible expressions we would want to write on pencil-and-paper
+%%      - Theories that rely on discussion of terms only found `ModelExpr' may only have code generation made possible if we have rich enough data (see goal #2)
+%%  - `CodeExpr' contains a total conversion from `Expr' with a few extra functionalities for GOOL
+%%  - Created a ``typed tagless final'' smart constructor encoding for writing expressions in Expr (or, optionally, ModelExpr).
+
+%% TODO: What is a good ``solution''?
+
+%% TODO: What are the next steps?
 
 \subsection{Goal \#2: Model Discrimination -- ``ModelKinds''}
-%% TODO: ``RelationConcept''s don't contain enough information on their own to be a core component usable in code generation.
 %% TODO: Problem? Why focus on this?
-%% TODO: What is a good ``solution''?
-%% TODO: Current project status?
+%% - ``RelationConcept''s don't contain enough information on their own to be a core component usable in code generation.
 
+%% TODO: Current project status?
+%%  - Considerable number of ``theories''/``*Models'' have been restructured, but there are still many that are pending typing. Most are best to be done once we have a typed expression language, and the rest are differential equational-related models (primarily Dong's domain).
+
+%% TODO: What is a good ``solution''?
+
+%% TODO: What are the next steps?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% ACKNOWLEDGEMENTS
