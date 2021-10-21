@@ -302,6 +302,28 @@
 
 \begin{frame}
     \frametitle{Goal \#1: Typed Expression Language}
+    \framesubtitle{Current Progression}
+
+    \begin{figure}
+        \center
+        \includegraphics[width=0.9\textwidth]{assets/code/expressions.png}
+        \caption{Polymorphic Expressions can become Exprs or ModelExprs}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Goal \#1: Typed Expression Language}
+    \framesubtitle{Current Progression}
+
+    \begin{figure}
+        \center
+        \includegraphics[width=\textwidth]{assets/code/derivationExprs.png}
+        \caption{Derivation Expressions, using terms only available in ModelExpr}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Goal \#1: Typed Expression Language}
     \framesubtitle{What are the next steps?}
     
     \begin{itemize}
@@ -372,11 +394,74 @@
 
 \begin{frame}
     \frametitle{Goal \#2: Theory Discrimination -- ``ModelKinds''}
+    \framesubtitle{Current Progression}
+
+    \begin{figure}
+        \center
+        \includegraphics[width=0.9\textwidth]{assets/code/qdefinitions.png}
+        \caption{Current QDefinitions}
+    \end{figure}
+
+    \begin{figure}
+        \center
+        \includegraphics[width=0.9\textwidth]{assets/code/multidefns.png}
+        \caption{Current MultiDefns}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Goal \#2: Theory Discrimination -- ``ModelKinds''}
+    \framesubtitle{Current Progression}
+
+    \begin{figure}
+        \center
+        \includegraphics[width=\textwidth]{assets/code/modelkinds.png}
+        \caption{Current ModelKinds}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Goal \#2: Theory Discrimination -- ``ModelKinds''}
+    \framesubtitle{Current Progression}
+
+    \begin{figure}
+        \center
+        \includegraphics[width=\textwidth]{assets/code/instancemodel.png}
+        \caption{Current InstanceModel}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Goal \#2: Theory Discrimination -- ``ModelKinds''}
+    \framesubtitle{Current Progression}
+
+    \begin{figure}
+        \center
+        \includegraphics[width=\textwidth]{assets/code/gendefn.png}
+        \caption{Current General Definitions}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Goal \#2: Theory Discrimination -- ``ModelKinds''}
+    \framesubtitle{Current Progression}
+
+    \begin{figure}
+        \center
+        \includegraphics[width=0.5\textwidth]{assets/code/theorymodel.png}
+        \caption{Current TheoryModels}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Goal \#2: Theory Discrimination -- ``ModelKinds''}
     \framesubtitle{What are the next steps?}
     
     \begin{itemize}
         \item<2-> Understanding what kinds of needs we have for ``collections'', pushing this information back into the typed expression language (once that is fully typed), and then creating model containers for these models.
         \item<3-> For the differential equation-related models, we will need to build appropriate models for each possible kind.
+        \item<4-> Cleaning up the existing implementation (removing the expression type parameter), and understanding where we want to go from here.
+        \item<5-> A current proposal is pending further discussion in GitHub Issue \#2853, potentially rebuilds ModelKinds to be extensible by using type constraints instead of GADTs.
     \end{itemize}
 \end{frame}
 
