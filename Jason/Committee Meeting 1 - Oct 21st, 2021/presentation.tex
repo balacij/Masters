@@ -246,7 +246,7 @@
     \onslide<5->{A few, notable, blocking problems:}
     \begin{itemize}
         \item<6-> Confidently generating usable software artifacts without strong type information places significant stress on developers, resulting in a higher likelihood of bugs in artifacts.
-        \item<7-> Existing ``theories''/``*Models''\footnotemark[1] don't expose enough information. They must be enriched.
+        \item<7-> Existing ``theories''/``*Models''\footnotemark[1] don't expose enough information. They must be enriched, so that we can pull more information from them.
     \end{itemize}
 
     \footnotetext[1]{\tiny Terminology is currently being changed, but is not reflected in many documents yet.}
@@ -254,18 +254,23 @@
 
 \subsection{Goal \#1: Typed Expression Language}
 %% TODO: Problem? Why focus on this?
+%% - Ensure only admissible expressions are used in GOOL-supported languages, and that all expressions are coherent.
+%% - Eases developer cognitive load when writing expressions, as they will need to ensure their expressions are coherent, or else a type error will be thrown.
 
 %% TODO: What is a good ``solution''?
+%% - Allows GOOL-code generator to also become typed!
 
 %% TODO: Current project status?
-%%  - Split expression language into 3 variants (Expr, ModelExpr, and CodeExpr)
-%%  - `Expr' is a discrete, directly computable language (calculator possible)
-%%  - `ModelExpr' contains all possible expressions we would want to write on pencil-and-paper
-%%      - Theories that rely on discussion of terms only found `ModelExpr' may only have code generation made possible if we have rich enough data (see goal #2)
-%%  - `CodeExpr' contains a total conversion from `Expr' with a few extra functionalities for GOOL
-%%  - Created a ``typed tagless final'' smart constructor encoding for writing expressions in Expr (or, optionally, ModelExpr).
+%% - Split expression language into 3 variants (Expr, ModelExpr, and CodeExpr)
+%% - `Expr' is a discrete, directly computable language (calculator possible)
+%% - `ModelExpr' contains all possible expressions we would want to write on pencil-and-paper
+%%     - Theories that rely on discussion of terms only found `ModelExpr' may only have code generation made possible if we have rich enough data (see goal #2)
+%% - `CodeExpr' contains a total conversion from `Expr' with a few extra functionalities for GOOL
+%% - Created a ``typed tagless final'' smart constructor encoding for writing expressions in Expr (or, optionally, ModelExpr).
 
 %% TODO: What are the next steps?
+%% - Continuing to remove terms
+%% - Splitting off the literals from ``Expr'' \& ``ModelExpr'' so that areas that want \emph{strictly} literals can also have stronger restrictions on allowed data (terms).
 
 \subsection{Goal \#2: Model Discrimination -- ``ModelKinds''}
 %% TODO: Problem? Why focus on this?
