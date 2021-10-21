@@ -318,6 +318,19 @@
     \frametitle{Goal \#2: Theory Discrimination -- ``ModelKinds''}
     \framesubtitle{Problem Description}
     
+    Assume we have a general concept consisting of $y = m \cdot x + b$, and a natural description ``The equation of a line, with a constant, b, and a dependent and independent variable, y and x, respectively.''.
+    \begin{itemize}
+        \item<2-> With basic analysis of the formation of the equation, generating code to represent a calculation of ``y'', given ``x'', should be straightforward.
+        \item<3-> But if the equation were written slightly different (e.g. $y - b = m \cdot x$), generating code based on this ``Relation''/Expr is significantly more tedious because we will need to solve for ``y''.
+        \item<4-> What if we want to change the symbols used? How do we know the ``b'' referred to in the equation is the same as the symbol ``b'' in the natural description?
+        \item<5-> We're ignoring the obvious information that this is the equation of a line, and that this is just an alternative ``Definition''.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Goal \#2: Theory Discrimination -- ``ModelKinds''}
+    \framesubtitle{Problem Description, \emph{cont.d}}
+    
     \begin{itemize}
         \item<2-> ``RelationConcepts'' were heavily used in both displaying expressions, and code generation. They are essentially ``Relation''s (``Expr''s) with a natural language description of them.
         \item<3-> ``RelationConcept''s don't contain enough information on their own to be a core component usable in general code generation.
