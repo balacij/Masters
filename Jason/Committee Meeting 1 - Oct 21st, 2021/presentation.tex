@@ -139,18 +139,17 @@
             \newline \newline
             \begin{minipage}{\textwidth}
                 \begin{itemize}
-                    \item<2-> is the project I'm contributing to.
-                    \item<3-> is managed by Dr. Carette \& Dr. Smith.
-                    \item<4-> originates from the work of Dan Szymczak.
+                    \item<2-> is managed by Dr. Carette \& Dr. Smith.
+                    \item<3-> originates from the work of Dan Szymczak.
                         \begin{itemize}
-                            \item<5-> Originally focused on scientific software (\emph{Literate Scientific Software}).
-                            \item<6-> Focus expanded...
+                            \item<4-> Originally focused on scientific software (\emph{Literate Scientific Software}).
+                            \item<5-> Focus expanded...
                         \end{itemize}
-                    \item<7-> tries to ``Generate All The Things''...
+                    \item<6-> tries to ``Generate All The Things''...
                     \begin{itemize}
-                        \item<8-> with a focus on research software.
+                        \item<7-> with a focus on research software.
                     \end{itemize}
-                    \item<9-> has a website\footnotemark[1]!
+                    \item<8-> has a website\footnotemark[1]!
                 \end{itemize}
             \end{minipage}
         \end{column}
@@ -202,7 +201,7 @@
             \begin{itemize}
                 \item<1-> \textbf{SWHS without Phase Change Material (NoPCM)} - Modelling of a solar water heating system without phase change material, predicting temperatures and change in heat energy of water and the PCM over time.
                 \item<2-> \textbf{Projectile} - Determining if a launched projectile hits a target, assuming no flight collisions.
-                \item<3-> \textbf{Slope Stability Analysis (SSP)} - Assessment of the safety of a slope (composed of rock and soil) subject to gravity, identifying the surface most likely to experience slip and an index of its relative stability (factor of safety).
+                \item<3-> \textbf{Slope Stability Analysis Program (SSP)} - Assessment of the safety of a slope (composed of rock and soil) subject to gravity, identifying the surface most likely to experience slip and an index of its relative stability (factor of safety).
                 \item<4-> \textbf{Heat Transfer Coefficients between Fuel and Cladding in Fuel Rods (HGHC)} - Examining the heat transfer coefficients related to clad.
             \end{itemize}
     \end{itemize}
@@ -256,82 +255,96 @@
 \end{frame}
 
 \subsection{Goal \#1: Typed Expression Language}
-%% TODO: Problem? Why focus on this?
-%% - Ensure only admissible expressions are used in GOOL-supported languages, and that all expressions are coherent.
-%% - Eases developer cognitive load when writing expressions, as they will need to ensure their expressions are coherent, or else a type error will be thrown.
+
 \begin{frame}
     \frametitle{Goal \#1: Typed Expression Language}
     \framesubtitle{The Problem}
     
+    \begin{itemize}
+        \item<2-> Ensure only admissible expressions are used in GOOL-supported languages, and that all expressions are coherent.
+        \item<3-> Eases developer cognitive load when writing expressions, as they will need to ensure their expressions are coherent, or else a type error will be thrown.
+    \end{itemize}
 \end{frame}
 
-%% TODO: What is a good ``solution''?
-%% - Catches, within reason, all possible scenarios where an expression goes awry. Dependent types would be a nice addition, but, alas.
-%% - Allows GOOL-code generator to also become typed!
 \begin{frame}
     \frametitle{Goal \#1: Typed Expression Language}
     \framesubtitle{What makes up a ``good'' solution?}
     
+    \begin{itemize}
+        \item<2-> Catches, within reason, all possible scenarios where an expression goes awry.
+        \item<3-> Allows GOOL code generator to also become typed!
+    \end{itemize}
 \end{frame}
 
-%% TODO: Current project status?
-%% - Split expression language into 3 variants (Expr, ModelExpr, and CodeExpr)
-%% - `Expr' is a discrete, directly computable language (calculator possible)
-%% - `ModelExpr' contains all possible expressions we would want to write on pencil-and-paper
-%%     - Theories that rely on discussion of terms only found `ModelExpr' may only have code generation made possible if we have rich enough data (see goal #2)
-%% - `CodeExpr' contains a total conversion from `Expr' with a few extra functionalities for GOOL
-%% - Created a ``typed tagless final'' smart constructor encoding for writing expressions in Expr (or, optionally, ModelExpr).
 \begin{frame}
     \frametitle{Goal \#1: Typed Expression Language}
     \framesubtitle{Current Progression}
     
+    \begin{itemize}
+        \item<2-> Split core mathematical expression language (Expr) into 3 variants (Expr, ModelExpr, and CodeExpr)
+            \begin{itemize}
+                \item<3-> `Expr' is a discrete, directly computable language (calculator possible)
+                \item<4-> Created `ModelExpr' contains all possible expressions we would want to write on pencil-and-paper. There are still a few operations left in ``Expr'' that need to be moved over, however.
+                    \begin{itemize}
+                        \item<5-> Theories that rely on discussion of terms only found `ModelExpr' may only have code generation made possible if we have rich enough data (see goal \#2)
+                    \end{itemize}
+                \item<6-> `CodeExpr' contains a total conversion from `Expr' with a few extra functionalities for GOOL
+                \item<7-> Created a ``typed tagless final'' smart constructor encoding for writing expressions in ``Expr'' (or, optionally, ModelExpr).
+            \end{itemize}
+    \end{itemize}
 \end{frame}
 
-%% TODO: What are the next steps?
-%% - Continuing to remove terms
-%% - Splitting off the literals from ``Expr'' \& ``ModelExpr'' so that areas that want \emph{strictly} literals can also have stronger restrictions on allowed data (terms).
 \begin{frame}
     \frametitle{Goal \#1: Typed Expression Language}
     \framesubtitle{What are the next steps?}
     
+    \begin{itemize}
+        \item<2-> Continuing to remove terms.
+        \item<3-> Moving literals from ``Expr'' \& ``ModelExpr'' into their own small language, so that areas that want \emph{strictly} literals can also have stronger restrictions on allowed data (terms).
+    \end{itemize}
 \end{frame}
 
 \subsection{Goal \#2: Model Discrimination -- ``ModelKinds''}
-%% TODO: Problem? Why focus on this?
-%% - ``RelationConcept''s don't contain enough information on their own to be a core component usable in code generation.
-%%   They were essentially ``Relation''s (``Expr''s) with a natural language description of them.
-%%   If the ``shape'' of the expressions are not uniform, then writing more ``interpreters''/``views''/code generators for them required hacky shape analysis. It's far too difficult, and it's not a total-conversion.
+
 \begin{frame}
     \frametitle{Goal \#2: Model Discrimination -- ``ModelKinds''}
     \framesubtitle{The Problem}
     
+    \begin{itemize}
+        \item<2-> ``RelationConcept''s don't contain enough information on their own to be a core component usable in code generation.
+        \item<3-> They were essentially ``Relation''s (``Expr''s) with a natural language description of them.
+        \item<4-> If the ``shape'' of the expressions are not uniform, then writing more ``interpreters''/``views''/code generators for them required difficult pattern analysis. It's also not a total-conversion.
+    \end{itemize}
 \end{frame}
 
-%% TODO: What is a good ``solution''?
-%% - A good solution involves making the ``Relation''s a ``view'' of a more data-rich specialized container for each kind of ``*Model''.
-%% - Enter: ``ModelKinds''
-%% - By constructing our final data views through ``more steps'' (e.g., with more depth), we create a system of specialization, and we can start to see how specialization will occur.
 \begin{frame}
     \frametitle{Goal \#2: Model Discrimination -- ``ModelKinds''}
     \framesubtitle{What makes up a ``good'' solution?}
     
+    \begin{itemize}
+        \item<2-> A good solution involves making the ``Relation''s a ``view'' of a more data-rich specialized container for each kind of ``*Model''.
+        \item<3-> ``ModelKinds''
+        \item<4-> By constructing our final data views through ``more steps'' (e.g., with more depth), we create a system of specialization, and we can start to see how specialization will occur.
+    \end{itemize}
 \end{frame}
 
-%% TODO: Current project status?
-%% - Considerable number of ``theories''/``*Models'' have been restructured, but there are still many that are pending typing. Most are best to be done once we have a typed expression language, and the rest are differential equation-related models (primarily Dong's domain).
 \begin{frame}
     \frametitle{Goal \#2: Model Discrimination -- ``ModelKinds''}
     \framesubtitle{Current Progression}
     
+    \begin{itemize}
+        \item<2-> Considerable number of ``theories''/``*Models'' have been restructured, but there are still many that are pending typing. Most are best to be done once we have a typed expression language, and the rest are differential equation-related models (primarily Dong's domain).
+    \end{itemize}
 \end{frame}
 
-%% TODO: What are the next steps?
-%% - Understanding what kinds of needs we have for ``collections'', pushing this information back into the typed expression language (once that is fully typed), and then further creating model containers for these models.
-%% - For the differential equation-related models, we will need to build appropriate models for each kind.
 \begin{frame}
     \frametitle{Goal \#2: Model Discrimination -- ``ModelKinds''}
     \framesubtitle{What are the next steps?}
     
+    \begin{itemize}
+        \item<2-> Understanding what kinds of needs we have for ``collections'', pushing this information back into the typed expression language (once that is fully typed), and then further creating model containers for these models.
+        \item<3-> For the differential equation-related models, we will need to build appropriate models for each kind.
+    \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
