@@ -52,9 +52,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 
-% TODO: How personal do I want to get?
-% TODO: Mention 3D printing or no?
-
 \begin{frame}
     \frametitle{Who am I?}
     \begin{columns}[T,onlytextwidth]
@@ -167,13 +164,21 @@
 \begin{frame}
     \frametitle{Drasil}
     \framesubtitle{``Generate All The Things!''}
-    
-    \begin{itemize}
-        \item TODO: here!
 % TODO: ``Generate All The Things!'' is a beautifully appropriate tagline for Drasil
 %       for a few reasons:
 %                  1. What are ``Things''? One may only think of ``Things'' as far as their knowledge and understanding allows them! You wouldn't be able to think of things without some sort of basis/constructive understanding/methodology to _get_ there, you can't _think of random phenomena_ (that's why they're phenomena).
+    
+    \begin{itemize}
+        \item An exploration in software-related artifact generation for ``well understood'' domains through strong knowledge capture.
+            \begin{itemize}
+                \item By unifying knowledge into a single framework with deeply reusable composable units of knowledge, we eliminate code duplication.
+                \item Knowledge organization and capture is of utmost importance in Drasil, as it is the pathway for interpreters and Domain-Specific Languages (DSLs) to make appropriate usage of the knowledge captured.
+                \item By creating different kinds of ``printers'', we can use a stable knowledge-base to easily generate software that solves well understood problems.
+            \end{itemize}
+        \item Drasil currently focuses on building research software, with Software Requirement Specification documents (SRS) in both LaTeX and HTML (with MathJaX), code to solve a problem, README files, Makefiles, graphs, etc.
     \end{itemize}
+
+    \tiny{} Excerpts from unpublished, blinded paper: \url{https://github.com/JacquesCarette/Drasil/blob/NIER2021/Papers/WellUnderstood/wu.pdf}.
 \end{frame}
 
 \begin{frame}
@@ -239,11 +244,11 @@
 
     \onslide<2->{After all,}
     \begin{itemize}
-        \item<3-> They're all covered under ``well-understood'' domains!
+        \item<3-> They're all covered under ``well understood'' domains!
         \item<4-> The SRS documents are generated!\\
     \end{itemize}
 
-    \onslide<5->{Generating view-only data (e.g., SRS documents) is considerably easier than generating working code.}
+    \onslide<5->{Generating view-only data (e.g., SRS documents) is considerably easier than generating artifacts that are ``evaluated'' in some way or another (e.g., compilation/interpretation/static analysis)}
 
     \onslide<6->{A few, notable, blocking problems:}
     \begin{itemize}
@@ -290,7 +295,7 @@
                         \item<5-> Theories that rely on discussion of terms only found ``ModelExpr'' may only have code generated for them if we have rich enough data (see goal \#2).
                     \end{itemize}
                 \item<6-> ``CodeExpr'' is a clone of `Expr', with a few extra functionalities for GOOL.
-                \item<7-> Created a ``typed tagless final'' smart constructor encoding for writing expressions in ``Expr'' (or, optionally, ModelExpr).
+                \item<7-> Created a typed tagless final\cite{Carette2009finally} smart constructor encoding for writing expressions in ``Expr'' (or, optionally, ModelExpr).
             \end{itemize}
     \end{itemize}
 \end{frame}
@@ -303,7 +308,7 @@
         \item<2-> Continue moving inadmissible terms from ``Expr'' into ``ModelExpr''.
         \item<3-> Moving literals from ``Expr'' \& ``ModelExpr'' into their own small language, so that areas that want \emph{strictly} literals can also have stronger restrictions on allowed data.
         \item<4-> Adjusting containers to allow for expressions with a type variable.
-        \item<5-> Adding the final type signatures, using GADT syntax.
+        \item<5-> Adding the final type signatures, using Haskell GADT syntax.
     \end{itemize}
 \end{frame}
 
