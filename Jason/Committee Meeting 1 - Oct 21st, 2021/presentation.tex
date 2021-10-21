@@ -169,13 +169,13 @@
 %                  1. What are ``Things''? One may only think of ``Things'' as far as their knowledge and understanding allows them! You wouldn't be able to think of things without some sort of basis/constructive understanding/methodology to _get_ there, you can't _think of random phenomena_ (that's why they're phenomena).
     
     \begin{itemize}
-        \item An exploration in software-related artifact generation for ``well understood'' domains through strong knowledge capture.
+        \item<2-> An exploration in software-related artifact generation for ``well understood'' domains through strong knowledge capture.
             \begin{itemize}
-                \item By unifying knowledge into a single framework with deeply reusable composable units of knowledge, we eliminate code duplication.
-                \item Knowledge organization and capture is of utmost importance in Drasil, as it is the pathway for interpreters and Domain-Specific Languages (DSLs) to make appropriate usage of the knowledge captured.
-                \item By creating different kinds of ``printers'', we can use a stable knowledge-base to easily generate software that solves well understood problems.
+                \item<3-> By unifying knowledge into a single framework with reusable composable units of knowledge, we eliminate code duplication, formally impose traceability and maintainability of knowledge (and software), and allow for easy knowledge transference.
+                \item<4-> Knowledge organization and capture is of utmost importance, as it is the pathway for interpreters and Domain-Specific Languages (DSLs) to make appropriate usage of the knowledge captured.
+                \item<5-> By creating different kinds of ``printers'', we can use a stable knowledge-base to generate software that solves ``well understood'' problems.
             \end{itemize}
-        \item Drasil currently focuses on building research software, with Software Requirement Specification documents (SRS) in both LaTeX and HTML (with MathJaX), code to solve a problem, README files, Makefiles, graphs, etc.
+        \item<6-> Drasil currently focuses on building research software, with Software Requirement Specification documents (SRS) in both LaTeX and HTML (with MathJaX), code to solve a problem, README files, Makefiles, graphs, etc.
     \end{itemize}
 
     \tiny{} Excerpts from unpublished, blinded paper: \url{https://github.com/JacquesCarette/Drasil/blob/NIER2021/Papers/WellUnderstood/wu.pdf}.
@@ -263,7 +263,7 @@
 
 \begin{frame}
     \frametitle{Goal \#1: Typed Expression Language}
-    \framesubtitle{The Problem}
+    \framesubtitle{Problem Description}
     
     \begin{itemize}
         \item<2-> Ensure only admissible expressions are used in GOOL-supported languages, and that all expressions are coherent.
@@ -279,6 +279,7 @@
         \item<2-> Catches, within reason, all possible scenarios where an expression goes awry.
         \item<3-> Allows GOOL code generator to also become typed!
         \item<4-> Add extra functionality to existing expression languages safely, allowing for new data types to be introduced.
+        \item<5-> Adding type information to expressions shouldn't be a burden!
     \end{itemize}
 \end{frame}
 
@@ -316,10 +317,10 @@
 
 \begin{frame}
     \frametitle{Goal \#2: Theory Discrimination -- ``ModelKinds''}
-    \framesubtitle{The Problem}
+    \framesubtitle{Problem Description}
     
     \begin{itemize}
-        \item<2-> Previously, ``RelationConcepts'' were heavily used in both displaying expressions, and code generation. They are essentially ``Relation''s (``Expr''s) with a natural language description of them.
+        \item<2-> ``RelationConcepts'' were heavily used in both displaying expressions, and code generation. They are essentially ``Relation''s (``Expr''s) with a natural language description of them.
         \item<3-> ``RelationConcept''s don't contain enough information on their own to be a core component usable in general code generation.
         \item<4-> If the ``shape'' of the expressions are not uniform, then writing more ``interpreters''/``views''/code generators for them required difficult pattern analysis. It's also not a total-conversion.
     \end{itemize}
@@ -333,6 +334,7 @@
         \item<2-> A good solution involves making the ``Relation''s a ``view'' of a more data-rich specialized container for each kind of ``Theory''/``*Model''.
         \item<3-> ``ModelKinds''
         \item<4-> By constructing our final data views through ``more steps'' (e.g., with more depth), we obtain a better understanding of our ``theories'', allowing us to do more with them.
+        \item<5-> We should be able to easily add extra ``ModelKind'' variants.
     \end{itemize}
 \end{frame}
 
@@ -362,7 +364,7 @@
     
     \begin{itemize}
         \item<2-> Understanding what kinds of needs we have for ``collections'', pushing this information back into the typed expression language (once that is fully typed), and then creating model containers for these models.
-        \item<3-> For the differential equation-related models, we will need to build appropriate models for each kind.
+        \item<3-> For the differential equation-related models, we will need to build appropriate models for each possible kind.
     \end{itemize}
 \end{frame}
 
