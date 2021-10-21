@@ -86,8 +86,8 @@
                 \item<2-> One (1) ``Software'' course
                 \item<3-> Either of:
                     \begin{itemize}
-                        \item<4-> Two ``Theory'' courses, and one ``Systems'' course
-                        \item<4-> One ``Theory'' course, and two ``Systems'' courses
+                        \item<4-> Two (2) ``Theory'' courses, and one (1)``Systems'' course
+                        \item<4-> One (1) ``Theory'' course, and two (2) ``Systems'' courses
                     \end{itemize}
             \end{itemize}
         \item<5-> I've completed:
@@ -169,13 +169,13 @@
 %                  1. What are ``Things''? One may only think of ``Things'' as far as their knowledge and understanding allows them! You wouldn't be able to think of things without some sort of basis/constructive understanding/methodology to _get_ there, you can't _think of random phenomena_ (that's why they're phenomena).
     
     \begin{itemize}
-        \item<2-> An exploration in software-related artifact generation for ``well understood''\cite{KnowledgeCapture2021} domains through strong knowledge capture.
+        \item<2-> An exploration in software-related artifact generation for ``well understood'' domains \cite{KnowledgeCapture2021} through strong knowledge capture.
             \begin{itemize}
                 \item<3-> By unifying knowledge into a single framework with reusable composable units of knowledge, we eliminate code duplication, formally impose traceability and maintainability of knowledge (and software), and allow for easy knowledge transference.
                 \item<4-> Knowledge organization and capture is of utmost importance, as it is the pathway for interpreters and Domain-Specific Languages (DSLs) to make appropriate usage of the knowledge captured.
                 \item<5-> By creating different kinds of ``printers'', we can use a stable knowledge-base to generate software that solves ``well understood'' problems.
             \end{itemize}
-        \item<6-> Drasil currently focuses on building research software, with Software Requirement Specification documents (SRS) in both LaTeX and HTML (with MathJaX), code to solve a problem, README files, Makefiles, graphs, etc.
+        \item<6-> Drasil currently focuses on building research software, generating Software Requirement Specification documents (SRS) in both LaTeX and HTML (with MathJaX), code to solve a problem, README files, Makefiles, graphs, etc.
     \end{itemize}
 \end{frame}
 
@@ -229,10 +229,10 @@
     \frametitle{Which case studies currently generate code?}
 
     \begin{itemize}
-        \item<1-> \textbf{GlassBR} - Predicting whether or not a glass slab is likely to resist a specified blast.
-        \item<2-> \textbf{Proportional Derivative Controller (PDController)} - Examining the output of a ``Power Plant'' (Process Variable) over time.
-        \item<3-> \textbf{SWHS without Phase Change Material (NoPCM)} - Modelling of a solar water heating system without phase change material, predicting temperatures and change in heat energy of water and the PCM over time.
-        \item<4-> \textbf{Projectile} - Determining if a launched projectile hits a target, assuming no flight collisions.
+        \item<2-> \textbf{GlassBR} - Predicting whether or not a glass slab is likely to resist a specified blast.
+        \item<3-> \textbf{Proportional Derivative Controller (PDController)} - Examining the output of a ``Power Plant'' (Process Variable) over time.
+        \item<4-> \textbf{SWHS without Phase Change Material (NoPCM)} - Modelling of a solar water heating system without phase change material, predicting temperatures and change in heat energy of water and the PCM over time.
+        \item<5-> \textbf{Projectile} - Determining if a launched projectile hits a target, assuming no flight collisions.
     \end{itemize}
 \end{frame}
 
@@ -246,7 +246,7 @@
         \item<4-> The SRS documents are generated!\\
     \end{itemize}
 
-    \onslide<5->{Generating view-only data (e.g., SRS documents) is considerably easier than generating artifacts that are ``evaluated'' in some way or another (e.g., compilation/interpretation/static analysis)}
+    \onslide<5->{Generating view-only data (e.g., SRS documents) is considerably easier than generating artifacts that are ``evaluated'' in some way or another (e.g., compilation/interpretation/static analysis). These are largely different ``printers''.}
 
     \onslide<6->{A few, notable, blocking problems:}
     \begin{itemize}
@@ -265,7 +265,7 @@
     
     \begin{itemize}
         \item<2-> Ensure only admissible expressions are used in GOOL-supported languages, and that all expressions are coherent.
-        \item<3-> We want to ease developer cognitive load when writing expressions, as they will need to ensure their expressions are coherent, or else a type error can occur at runtime.
+        \item<3-> We want to ease developer cognitive load when writing expressions, as they will need to ensure their expressions are coherent, or else various problems (type, syntax, etc) can occur at runtime (of generated software artifacts).
     \end{itemize}
 \end{frame}
 
@@ -278,6 +278,7 @@
         \item<3-> Allows GOOL code generator to also become typed!
         \item<4-> Add extra functionality to existing expression languages safely, allowing for new data types to be introduced.
         \item<5-> Adding type information to expressions shouldn't be a burden!
+        \item<6-> Decomposing/splitting vocabularies so that we can impose restrictions on allowed terms, while not causing problems for interoperability.
     \end{itemize}
 \end{frame}
 
@@ -288,13 +289,13 @@
     \begin{itemize}
         \item<2-> Split core mathematical expression language (Expr) into 3 variants (Expr, ModelExpr, and CodeExpr)
             \begin{itemize}
-                \item<3-> `Expr' is a discrete, directly computable language, expected to have a \emph{total} conversion into code (e.g., calculator).
-                \item<4-> Created `ModelExpr', which contains all other kinds of expressions we might want to express, but won't necessarily be directly convertible into code. There are still a few operations left in ``Expr'' that need to be moved over, however.
+                \item<3-> Expr is intended to be ``directly computable'' language (e.g., an advanced calculator), expected to have a \emph{total} conversion into code.
+                \item<4-> Created ModelExpr, which contains all other terms we might want to express, but won't necessarily be directly convertible into code. There are still a few operations left in Expr that need to be moved over, however.
                     \begin{itemize}
-                        \item<5-> Theories that rely on discussion of terms only found ``ModelExpr'' may only have code generated for them if we have rich enough data (see goal \#2).
+                        \item<5-> Theories that rely on discussion of terms only found in ModelExpr may only have representational code generated if we have rich surrounding data (preferably also that generates said ``ModelExpr''s, see goal \#2).
                     \end{itemize}
-                \item<6-> ``CodeExpr'' is a clone of `Expr', with a few extra functionalities for GOOL.
-                \item<7-> Created a typed tagless final\cite{Carette2009finally} smart constructor encoding for writing expressions in ``Expr'' (or, optionally, ModelExpr).
+                \item<6-> CodeExpr is a clone of Expr, with a few extra functionalities for GOOL.
+                \item<7-> Created a ``typed tagless final'' \cite{Carette2009finally} smart constructor encoding for writing expressions in Expr, and/or ModelExpr.
             \end{itemize}
     \end{itemize}
 \end{frame}
@@ -304,8 +305,8 @@
     \framesubtitle{What are the next steps?}
     
     \begin{itemize}
-        \item<2-> Continue moving inadmissible terms from ``Expr'' into ``ModelExpr''.
-        \item<3-> Moving literals from ``Expr'' \& ``ModelExpr'' into their own small language, so that areas that want \emph{strictly} literals can also have stronger restrictions on allowed data.
+        \item<2-> Continue moving inadmissible terms from Expr into ModelExpr.
+        \item<3-> Moving literals from Expr \& ModelExpr into their own small language, so that areas that want \emph{strictly} literals can also have stronger restrictions.
         \item<4-> Adjusting containers to allow for expressions with a type variable.
         \item<5-> Adding the final type signatures, using Haskell GADT syntax.
     \end{itemize}
@@ -331,7 +332,7 @@
     \begin{itemize}
         \item<2-> A good solution involves making the ``Relation''s a ``view'' of a more data-rich specialized container for each kind of ``Theory''/``*Model''.
         \item<3-> ``ModelKinds''
-        \item<4-> By constructing our final data views through ``more steps'' (e.g., with more depth), we obtain a better understanding of our ``theories'', allowing us to do more with them.
+        \item<4-> By constructing our final data views through ``more steps'' (e.g., with more depth), we obtain a better understanding of our ``theories''/``*Model''s/``ModelKinds'', allowing us to do more with them.
         \item<5-> We should be able to easily add extra ``ModelKind'' variants.
     \end{itemize}
 \end{frame}
@@ -351,7 +352,7 @@
             \end{itemize}
         \item<8-> Considerable number of ``theories''/``*Models'' have been restructured, but there are still many that are pending classification.
             \begin{itemize}
-                \item<9-> Most are best to be done once we have a typed expression language (so that we can better handle expressions that involve collections of sorts), and the rest are differential equation-related models (primarily Dong's domain).
+                \item<9-> Most are best to be done once we have a typed expression language (so that we can better handle expressions that involve collections), and the rest are differential equation-related models (primarily Dong's domain).
             \end{itemize}
     \end{itemize}
 \end{frame}
@@ -376,6 +377,8 @@
     \begin{itemize}
         \item<2-> Both goals are as designated by Dr. Carette, Dr. Smith, and past (and present) Drasil authors.
         \item<3-> ``ModelKinds'' is based on Dr. Carette's implementation.
+        \item<4-> Dr. Smith created the GlassBR figure earlier shown.
+        \item<5-> Drasil has had significant development by past (and present) authors. Their public notes in the issue tracker, and their works (in particular, that of Brooks' thesis) have been especially helpful in learning about Drasil.
     \end{itemize}
 \end{frame}
 
